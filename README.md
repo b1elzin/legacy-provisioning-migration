@@ -1,6 +1,6 @@
 # legacy-provisioning-migration
 
-Proof of concept for changing a queue contract without coordinating a big-bang release across every producer.
+Provider-integration modernization POC. It models the move from separate legacy provisioning paths to a shared contract without coordinating a big-bang release across every producer.
 
 The consumer accepts two envelopes, maps both to the same command and keeps the worker unaware of transport-version details.
 
@@ -72,4 +72,4 @@ POST /v1/dead-letters/:executionId/replay
 - Backoff/jitter between attempts.
 - Authentication on the replay endpoint.
 
-The interesting part of this repository is the compatibility boundary and cutover behavior, not the HTTP wrapper. See [ADR 001](docs/adr/001-strangler-migration.md).
+The interesting part of this repository is the compatibility boundary, gradual cutover and safe retirement of the legacy consumer—not the HTTP wrapper. See [ADR 001](docs/adr/001-strangler-migration.md).
